@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>北国之春</title>
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+		<style type="text/css">
+			.shouye-box{
+				width: 100%;
+				height: 50px;
+				background-color: #2c323b;
+			}
+			.shouye li,form{
+				display: inline-block;
+				
+			}
+			.shouye li{
+				margin-left: 20px;
+				margin-right: 20px;
+			}
+			.shouye a{
+				display: block;
+				
+				height: 50px;
+				
+			}
+			.shouye a div{
+				color: #aaafb7;
+				position: relative;
+				top: 10px;
+				height: 50px;
+				
+				
+			}
+			.shouye form{
+				color: #bbddd3;
+				position: relative;
+				top: 10px;
+				height: 50px;
+				
+				
+			}
+			.shouye button{
+				position: relative;
+				top: 10px;
+				
+			}
+		</style>
+		<style type="text/css">
+			*{
+				text-decoration: none;
+				list-style: none;
+			}
+		</style>
+		<style type="text/css">
+			.bg-body{
+				width: 100%;
+				height: 430px;
+				background-color: #2b475d;
+			}
+			.bg-body-content-1{
+				position: relative;
+				left: 300px;
+				
+				width: 250px;
+				height: 400px;
+				align-items: center;
+				float: left;
+				
+			}
+			.big-img{
+				width: 230px;
+				height: 230px;
+			}
+			.downloadMusic {
+				position: relative;
+				left: 40px;
+				top: 20px;
+				display: block;
+				width: 200px;
+				height: 50px;
+				/* background-color: bisque; */
+			}
+			.downloadMusic a{
+				
+				
+				display: block;
+				width: 150px;
+				height: 50px;
+				border: #6d858f 2px solid;
+				color: #6d858f;
+			}
+			.download-font{
+				position: absolute;
+				left: 30px;
+				top: 15px;
+				
+				width: 100px;
+				height: 30px;
+			}
+			.bg-body-content-2{
+				position: relative;
+				left: 500px;
+				
+				width: 400px;
+				height: 400px;
+				align-items: center;
+				float: left;
+			}
+			.bg-body-content-2-top{
+				position: absolute;
+				left: 40px;
+				width: 300px;
+				height: 100px;
+				
+			}
+			.bg-body-content-2-top-1{
+				width: 300px;
+				height: 50px;
+				
+			}
+			.bg-body-content-2-top-2{
+				width: 300px;
+				height: 50px;
+				
+			}
+			.audioName{
+				float: left;
+				font-size: 24px;
+				color: white;
+			}
+			.mv-box{
+				position: relative;
+				top: 15px;
+				left: 5px;
+				float: left;
+				font-size: 5px;
+				width: 20px;
+				height: 10px;
+				color: #06b0c9;
+				border: 2px #06b0c9 solid;
+				/* 调节字体的上下 */
+				line-height: 80%
+			}
+			.songerNamelabel{
+				float: left;
+				font-size: 15px;
+				color: #717d8b;
+			}
+			.songerName{
+				float: left;
+				font-size: 15px;
+				color: white;
+			}
+		</style>
+		<style type="text/css">
+		.none{
+				display: none;
+			}
+			audio{
+				/* width: 1000px;
+				height: 1000px; */
+			}
+			
+				
+			.allProgressBar{
+				position: absolute;
+				top: 20px;
+				background-color: #545252;
+				
+				width: 400px;
+				height: 10px;
+				
+			}
+			.ProgressBar{
+				position: absolute;
+				
+				width: 100px;
+				height: 10px;
+				background-color: #11a4f0;
+				float: left;
+			}
+			.ProgressBarBall{
+				position: absolute;
+				border-radius: 100%;
+				background: #dddddd;
+				width: 10px;
+				height: 10px;
+				left: 99px;
+			}
+			audio{
+				display: none;
+			}
+				
+		</style>
+		<style type="text/css">
+			*{
+				margin: 0;
+			}
+			.play-all{
+				width:100%;
+				height: 120px;
+				background-color: #14252e;
+				border: red solid 1px;
+			}
+			.play-all>*{
+				position: relative;
+				top: 20px;
+			}
+			.theThree-icon{
+				width: 100px;
+				height: 100px;
+				float: left;
+			}
+			.play-icon-box.box1,.play-icon-box.box3{
+				display: inline-block;
+				
+			}
+			.play-icon-box.box2{
+				display:inline-block;
+			}
+			.play-music{
+				color: #EEEEEE;
+				font-size: 50px;
+			}
+			.before-music,.after-music{
+				font-size: 30px;
+			}
+			.playTwo{
+				/* float: left; */
+			}
+			.img{
+				width: 100px;
+				height: 80px;
+				float: left;
+			}
+			.touxiang{
+				float: left;
+				width: 80px;
+				height: 80px;
+			}
+			.barAndfontTime{
+				float: left;
+			}
+			.bar-above{
+				width: 500px;
+				float: left;
+				height:20px;
+				border: blue saddlebrown 1px;
+			}
+			.allProgressBarBG{
+				position: relative;
+				
+				width: 500px;
+				height: 50px;
+				top: 25px;
+			}
+			.musicName{
+				
+				float: left;
+				
+				color: #c4c3c3;
+				width: 80px;
+				height:20px;
+			}
+			.musicNowTime{
+				position: relative;
+				right: 50px;
+				float: right;
+				
+				color: #697377;
+				width: 100px;
+				height:20px;
+			}
+				
+		</style>
+		
+	</head>
+		<body>
+			<div>
+				<div >
+					<audio src="G:\前端资料\music\beiguozhichun.mp3" controls="">
+					您的浏览器不支持audio标签。
+					</audio>
+				</div>
+				<div class="shouye-box">
+					<ul class="shouye">
+					    <li class="HomePage"><a href="javascript:void(0)"><div>首页</div></a></li>
+					    <li class="List"><a href=""><div>音乐榜单</div></a></li>
+					    <li class="search">
+							<form action="search.html" method="get">
+					            <input type="text" class="keyWord" name="keyWord" placeholder="北国之春"/>
+					        </form>
+							
+					        <button class="search-submit"><div>搜索</div></button>
+					    </li>
+					    <li class="login"><a href=""><div>登录</div></a></li>
+					</ul>
+				</div>
+			
+			<!-- 前面要加个fa -->
+			<div class="bg-body">
+				<div class="bg-body-content-1">
+					<img src="G:\前端资料\头像.png"  class="big-img">
+					<div class="downloadMusic">
+						<a href="javascript:void(0)">
+							<div class="download-font">下载这首歌</div>
+						</a>
+					</div>
+					
+				</div>
+				<div class="bg-body-content-2">
+					<div class="bg-body-content-2-top">
+						<div class="bg-body-content-2-top-1">
+							<div class="audioName">
+								北国之春
+							</div>
+							<div class="mv-box">mv</div>
+						</div>
+						<div class="bg-body-content-2-top-2">
+							<div class="songerNamelabel">歌手：</div>
+							<div class="songerName">赵鹏</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<!-- 播放是固定的 -->
+			<div class="play-all">
+				<div class="theThree-icon">
+					<div class="play-icon-box box1"><a href="#" class="before-music"><i class="fa fa-step-backward"></i></a></div>
+					<div class="play-icon-box box2">
+						<a href="javascript:void(0)" class="play-music  "><i class="fa fa-play-circle pause"></i><i class="fa fa-pause play none"></i></a>
+						
+					</div>
+					
+					<div class="play-icon-box box3"><a href="#" class="after-music"><i class="fa fa-step-forward"></i></a></div>
+				</div>
+				<div class="playTwo">
+					<div class="img"><img  class="touxiang" src="G:\前端资料\头像.png" ></div>
+					
+					<div class="barAndfontTime">
+						<!-- 进度条上面的文字 -->
+						<div class="bar-above">
+							<div class="musicName">北国之春</div>
+							<div class="musicNowTime"> ni1gao1</div>
+						</div>
+						<!-- 进度条 -->
+						<div class="allProgressBarBG">
+							<div class="allProgressBar ">
+								<div class="ProgressBar"></div>
+								<div class="ProgressBarBall"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			<div/>
+		</body>
+		
+		<script>
+			// 
+			document.querySelector(".play-music").onclick =function(){
+	
+				var m = document.querySelector("audio");
+				 if(m.paused == false){
+					 document.querySelector("i.pause").classList.remove("none");
+					 document.querySelector("i.play").classList.add("none");
+					m.pause();
+					
+				 }else{
+					 document.querySelector("i.pause").classList.add("none");
+					 document.querySelector("i.play").classList.remove("none");
+					 m.play();
+				 }	
+			}
+			
+			
+				// 计算时间
+				setInterval(function(){
+					var m = document.querySelector("audio");
+					var musicNowTime = document.querySelector(".musicNowTime");
+					var x = parseInt(m.currentTime);
+					var nowMin,nowMinInt = parseInt(x/60);
+					if(nowMinInt<10) {
+						nowMin = "0"+nowMinInt;
+					}else{
+						nowMin = ""+nowMinInt
+					}
+					var nowS,nowSInt = x%60;
+					if(nowSInt<10) {
+						nowS = "0"+nowSInt;
+					}else{
+						nowS = ""+nowSInt;
+					}
+					var allMin,allS
+					if(parseInt(m.duration)/60<10){
+						allMin = "0"+parseInt(parseInt(m.duration)/60);
+					}else{
+						allMin = ""+parseInt(parseInt(m.duration)/60);
+					}
+					if(parseInt(parseInt(m.duration)%60)<10){
+						allS = "0"+parseInt(parseInt(m.duration)%60);
+					}else{
+						allS = ""+parseInt(parseInt(m.duration)%60);
+					}
+					musicNowTime.innerHTML =nowMin+":"+nowS+"/"+allMin+":"+allS;
+				},10);
+				// 自动更新
+				setInterval(function(){
+					var m = document.querySelector("audio")
+					var ProgressBar = document.querySelector(".ProgressBar");
+					var x =(m.currentTime*1.0/m.duration)*((document.querySelector(".allProgressBar").offsetWidth))+"px";
+					var ProgressBarBall = document.querySelector(".ProgressBarBall"); // 那个球
+					ProgressBar.style.width = x;
+					// 球
+					
+					ProgressBarBall.style.left = x ;
+				},10);
+				// 调节音量
+				// 判断是否按下或者松开
+				var flag = false;
+				// 按下
+				document.querySelector(".ProgressBarBall").onmousedown =function(e){
+					flag = true;
+					
+				}
+				// 鼠标位置->audio--->可见
+					document.onmousemove = function (event) {
+						
+						
+						if(flag == true){
+							var m = document.querySelector("audio");
+							m.currentTime = ((event.clientX - document.querySelector(".allProgressBar").getBoundingClientRect().left)/((document.querySelector(".allProgressBar").offsetWidth)))*m.duration;
+						}			
+					}
+				//无论在哪松开都算false
+				document.onmouseup =function(e){
+					flag = false;
+				}
+		</script>
+		<!-- 设置音量 -->
+		<script type="text/javascript">
+			
+		</script>
+</html>

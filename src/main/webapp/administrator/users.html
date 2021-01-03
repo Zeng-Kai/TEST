@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .none{
+            display: none;
+        }
+        .full-screen{
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,0,0,.5);
+            position: absolute;
+            top: 0px;
+        }
+        .popup-box{
+            z-index: 999;
+            position: absolute;
+            left: 100px;
+            top:100px;
+            width: 300px;
+            height: 100px;
+            border: 1px red solid;
+            background: yellow;
+        }
+    </style>
+</head>
+<script type="text/javascript" src="/Umusic/jquery.min.js"></script>
+<body>
+    <div class="search-users-box">
+        <input type="text" class="search-users-box-input" />
+        <a href="javascript:void(0)" class="search-users-box-a">检索</a>
+        <hr/>
+    </div>
+    <div class="show-user-list-box">
+
+    </div>
+<!--    复制专用-->
+    <ul class="none copy-ul">
+
+    </ul>
+    <li class="none copy-li">
+        <span class="userId"> </span>
+        <span class="userName"> </span>
+        <span class="email"> </span>
+        <span class="password"></span>
+
+        <a href="javascript:void(0)" class="update-user-a">修改</a>
+        <a href="javascript:void(0)" class="delete-user-a">删除</a>
+    </li>
+<!--    --------------------------------------------------------->
+<!--全屏-->
+    <div class="full-screen "></div>
+    <div class="popup-box">
+        <input type="text" class="userId-input" disabled="disabled">
+        <input type="text" class="email-input" disabled="disabled">
+        <input type="text" class="userName-input">
+        <input type="text" class="password-input">
+        <a href="javascript:void(0)" class="submit-update">提交</a>
+        <a href="javascript:void(0)" class="cancel-popup-a">取消</a>
+    </div>
+</body>
+<script>
+    // 搜索增加点击事件，进行模糊查询
+    $(".search-users-box-a")[0].onclick=function(){
+        $.ajax({
+            url:"/Umusic/AdministratorUserServlet?keyWord="+$(".search-users-box-input")[0].value+"&method=findUserListByKeyWord",
+            dataType:"json",
+            success:function (data) {
+                if(data!=null){
+                    // 先移除上一个留的
+                    // 先移除上一个留的
+                    if($(".user-ul")[0]!=null){
+                        $(".show-user-list-box")[0].removeChild($(".user-ul")[0]);
+                    }
+                    // 先移除上一个留的
+                    // 先移除上一个留的
+                    var ul = $(".copy-ul")[0].cloneNode(true);
+                    ul.className = "user-ul";
+                    $(".show-user-list-box")[0].appendChild(ul);
+                    for(var i = 0 ; i <data.length; i ++){
+                        var li =  $(".copy-li")[0].cloneNode(true);
+                        li.className="user-li";
+                        ul.appendChild(li);
+                        li.querySelector(".userId").innerHTML = "用户id："+data[i].userId;
+                        li.querySelector(".userName").innerHTML = "用户名："+data[i].userName;
+                        li.querySelector(".email").innerHTML ="邮箱："+ data[i].email;
+                        li.querySelector(".password").innerHTML ="密码："+ data[i].password;
+                        // 给删除操作绑定事件需要设置属性
+                        li.querySelector(".delete-user-a").setAttribute("userId",data[i].userId);
+                        // 给每一个删除操作绑定事件
+                        li.querySelector(".delete-user-a").onclick=function () {
+                            $.ajax({
+                                url:"/Umusic/AdministratorUserServlet?userId="+this.getAttribute("userId")+"&method=delete",
+                                dataType:"json",
+                                success:function (data) {
+                                    $(".search-users-box-a")[0].click();
+                                }
+                            });
+                        }
+                        // 需要给标签绑定属性
+                        li.querySelector(".update-user-a").setAttribute("userId",data[i].userId);
+                        li.querySelector(".update-user-a").setAttribute("email",data[i].email);
+                        li.querySelector(".update-user-a").setAttribute("userName",data[i].userName);
+                        li.querySelector(".update-user-a").setAttribute("password",data[i].password);
+                        // 点击修改操作，弹出box，然后重新修改box的属性值
+                        li.querySelector(".update-user-a").onclick=function () {
+                            // 弹出盒子
+                            $(".popup-box").removeClass("none");
+                            $(".full-screen").removeClass("none");
+                            // 修改input的值，从标签属性中取
+
+                            $(".userId-input")[0].value = this.getAttribute("userId");
+                            $(".email-input")[0].value = this.getAttribute("email");
+                            $(".userName-input")[0].value = this.getAttribute("userName");
+                            $(".password-input")[0].value = this.getAttribute("password");
+                        }
+                    }
+                }
+            }
+        });
+    }
+    // 取消弹出修改
+    $(".cancel-popup-a").click(function () {
+
+        $(".popup-box").addClass("none");
+        $(".full-screen").addClass("none");
+    });
+    // 提交修改用户信息
+    $(".submit-update").click(function () {
+        var url = "?method=update&userId="+$(".userId-input")[0].value+"&userName="+$(".userName-input")[0].value+"&password="+$(".password-input")[0].value;
+        $.ajax({
+            url:"/Umusic/AdministratorUserServlet"+url,
+            dataType:"json",
+            success:function (data) {
+                alert("更改成功");
+                //更改成取消弹出                $(".cancel-popup-a")[0].click();
+                // 再刷新
+                $(".search-users-box-a")[0].click();
+            }
+        });
+    });
+</script>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>评论</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+    <link type="text/css" rel="stylesheet" href="mycss/shouye.css" />
+    <style>
+        .none{
+            display: none;
+        }
+        .send-comment-box{
+            width: 100%;
+            height: 200px;
+            background-color: #007dff;
+        }
+    </style>
+</head>
+<body>
+<div class="shouye-box">
+    <ul class="shouye">
+        <li class="HomePage"><a href="index.html"><div>首页</div></a></li>
+        <li class="List"><a href="rank/listenNumber.html"><div>音乐榜单</div></a></li>
+        <li class="search">
+            <form action="search.html" method="get">
+                <input type="text" class="keyWord" name="keyWord" placeholder="北国之春"/>
+            </form>
+            <button class="search-submit"><div>搜索</div></button>
+        </li>
+        <li class="login">
+            <a href="javascript:void(0)" class="show-login"><div>登录</div></a>
+            <label class="none"><div></div></label>
+        </li>
+    </ul>
+    <div class="loginAllBg none"></div>
+    <div class="show-login-box none">
+        <div class="hide-login-box"> <a href="javascript:void(0)" class="hide-login"><i class="fa fa-remove"></i></a></div>
+        <iframe src="login.html" class="login-iframe" height="200px" width="300px"> </iframe>
+    </div>
+</div>
+<div class="send-comment-box">
+    <input type="text" class="comment-input"/>
+    <a href="javascript:void(0)" class="send-comment-a">发送</a>
+</div>
+<div class="show-comment-box">
+
+</div>
+<!--赋值专用-->
+<ul class="show-comment-ul-copy none">
+
+</ul>
+<li class="show-comment-li-copy none">
+
+</li>
+</body>
+<script type="text/javascript" src="myjs/login.js"></script>
+<script type="text/javascript" src="myjs/comment.js"></script>
+<script>
+
+    // 每次重新打开这个页面的时候进行判断用户是否登录
+    window.onload = function () {
+        // 判断登录
+        refreshLogin();
+        // 显示评论
+        showComment();
+    }
+
+</script>
+</html>

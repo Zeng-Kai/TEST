@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+    <form action="RegisterServlet?method=add" method="post">
+        用户名:<input type="text" class="userName" name="userName"/><br/>
+        邮箱:<input type="text" onblur="determine()" class="email" name="email"/>
+        <span class="determine" style="color: green;font-size: 40px;"></span>
+        <br/>
+        密码:<input type="password" class="password" name="password"/><br/>
+        确认密码:<input type="password" class="confirmPassword"/><br/>
+        <input type="submit" class="button"/>
+    </form>
+</body>
+
+<script>
+    // 提交事件
+    document.querySelector(".button").onclick=function(){
+    <!--密码与确认密码不一致情况-->
+    if(document.querySelector(".password").value!=document.querySelector(".confirmPassword").value){
+
+        alert("两次密码不一致！");
+        return false;
+    }
+        if(document.querySelector(".email").value==""){
+            alert("邮箱不能为空");
+            return false;
+        }
+    if(document.querySelector(".userName").value==""){
+        alert("用户名不能为空");
+        return false;
+    }
+    return determineFlag;
+}
+</script>
+<!--ajax判断邮箱是否重复-->
+<script>
+    // 提交表单时要用到determineFlag，为true时表示没有重复的，
+    var determineFlag = true;
+    // ajax判断邮箱是否重复
+    function determine () {
+        var xhr= new XMLHttpRequest();
+        // 建立对服务器的调用
+        xhr.open("GET","RegisterServlet?method=check&email="+document.querySelector(".email").value);
+        xhr.onreadystatechange = function(){
+            // 当readyState==4且状态为200时，表示响应就绪
+            if(xhr.readyState==4&&xhr.status==200){
+                var x = "("+ (xhr.responseText) +")";
+                responseObj = eval(x);
+                if(responseObj==true){
+                    determineFlag = true;
+                    document.querySelector(".determine").innerHTML="√";
+                }else{
+                    determineFlag = false;
+                    document.querySelector(".determine").innerHTML="×";
+                }
+            }
+        }
+        xhr.send(null);
+    }
+</script>
+
+</html>

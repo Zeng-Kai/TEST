@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Title</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css"/>
+    <link type="text/css" rel="stylesheet" href="mycss/shouye.css" />
+    <style>
+        .music-list  li a{
+            text-decoration: none;
+            color: black;
+        }
+        .music-list  li a:hover{
+
+            color: palevioletred;
+        }
+        .music-list ul li {
+            display: block;
+            margin: 10px;
+            list-style: none;
+        }
+    </style>
+
+
+    <style>
+        .none{
+            display: none;
+
+        }
+    </style>
+    <style>
+        .shouye-box .shouye .none{
+            display: none;
+        }
+        /*下拉菜单显示个人主页和退出登录*/
+        .show-li-box{
+            position: relative;
+            top: 10px;
+            width: 100px;
+            height: 30px;
+            background: green;
+        }
+        /*实现下拉菜单*/
+        .show-li-box:hover>.show-li-box-hover{
+            display: block;
+        }
+        /*菜单*/
+        .show-li-box-hover{
+            display: none;
+            position: absolute;
+            z-index: 9999;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        /*退出登录、个人主页*/
+        .show-li-box-hover a{
+            display: block;
+        }
+    </style>
+</head>
+<body >
+<div class="shouye-box">
+    <ul class="shouye">
+        <li class="HomePage"><a href="index.html"><div>首页</div></a></li>
+        <li class="List"><a href="rank/listenNumber.html"><div>音乐榜单</div></a></li>
+        <li class="search">
+            <form action="search.html" method="get">
+                <input type="text" class="keyWord" name="keyWord" placeholder="北国之春"/>
+            </form>
+            <button class="search-submit"><div>搜索</div></button>
+        </li>
+        <li class="login">
+            <a href="javascript:void(0)" class="show-login ">
+                <div></div>
+            </a>
+        </li>
+
+        <li class="show-li none">
+            <div class="show-li-box">
+                <div class="user-name">
+                </div>
+                <div class="show-li-box-hover">
+                    <a href="homepage.html" target="_blank" >个人主页</a>
+                    <a href="" class="logout">退出登录</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="loginAllBg none"></div>
+    <div class="show-login-box none">
+        <div class="hide-login-box"> <a href="javascript:void(0)" class="hide-login"><i class="fa fa-remove"></i></a></div>
+        <iframe src="login.html" class="login-iframe" height="200px" width="300px"> </iframe>
+    </div>
+</div>
+<hr/>
+<hr/>
+<div class="TEXT">
+
+</div>
+<div class="music-list">
+
+</div>
+<!--复制-->
+<ul class="music-list-ul-copy none">
+
+</ul>
+<li class="music-list-li-copy none">
+    <a href= "" class="music-list-a"></a>
+</li>
+</body>
+<script type="text/javascript" src="myjs/search.js"></script>
+<script>
+    // 当其他html搜索歌曲跳转到search.html时候，先发送异步请求查询关键字
+    window.onload= function () {
+        //通过ajax，判断用户是否登录
+        refreshLogin();
+        // 别的页面跳转搜索
+        var thisUrl = window.location.href;
+        var arrays = thisUrl.split("?");
+        var sendUrl = arrays[1];
+        updeList("SearchServlet?"+sendUrl);
+    }
+</script>
+</html>

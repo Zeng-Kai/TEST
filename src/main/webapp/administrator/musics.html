@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐管理</title>
+    <script type="text/javascript" src="/Umusic/jquery.min.js"></script>
+    <style>
+        .none{
+            display: none;
+        }
+        .full-screen{
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,0,0,.5);
+            position: absolute;
+            top: 0px;
+
+        }
+        .popup-box{
+            z-index: 990;
+            width: 400px;
+            height: 400px;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            background: yellow;
+        }
+        .myimg{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <style>
+        .popup-box>div>input{
+            display: block;
+            margin-top: 5px;
+            margin-bottom: 5px;
+
+        }
+        .popup-box>div{
+            position: relative;
+            left: 50px;
+        }
+        .myimg-box{
+            position: absolute;
+            left: 200px;
+            top: 30px;
+        }
+        .select-file-a-one{
+            display: block;
+            color: #000;
+            text-decoration: none;
+            background: #a1a1a1;
+            width: 100px;
+            height: 20px;
+            margin: 20px;
+            position: relative;
+            left: 180px;
+            top:50px
+        }
+        .select-file-a-two{
+            display: block;
+            color: #000;
+            text-decoration: none;
+            background: #a1a1a1;
+            width: 100px;
+            height: 20px;
+            margin: 20px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+<div class="search-musics-box">
+    <input type="text" class="search-musics-box-input" />
+    <a href="javascript:void(0)" class="search-musics-box-a">检索</a>
+    <a href="javascript:void(0)" class="add-music">新增</a>
+    <hr/>
+</div>
+<div class="show-music-list-box">
+
+</div>
+<!--    复制专用-->
+<ul class="none copy-ul">
+
+</ul>
+<li class="none copy-li">
+    <span class="musicId"> </span>
+    <span class="musicName"> </span>
+    <span class="singerName"> </span>
+    <span class="momment_number"></span>
+    <a href="javascript:void(0)" class="update-music-a">修改</a>
+    <a href="javascript:void(0)" class="delete-music-a">删除</a>
+</li>
+<!--    --------------------------------------------------------->
+<!--全屏-->
+<div class="full-screen none"></div>
+<div class="popup-box none">
+    <div class="">
+        <input  type="text" disabled class="musicId-input"/>
+        <input  type="text"  class="musicName-input" value="音乐名"/>
+        <input  type="text"  class="singerName-input" value="歌手名"/>
+        <a href="javascript:void(0)"   class="select-file-a-one" onclick="$('.musicPhoto')[0].click()">点击上图片</a>
+        <input type="file" class="color:white; musicPhoto none" name="musicPhoto" style="display: none;"/>
+        <a href="javascript:void(0)" class="select-file-a-two"onclick="$('.musicAudio')[0].click()">点击上音频</a>
+        <input type="file" class="musicAudio" name = "musicAudio" style="display: none;"/>
+
+        <div class="myimg-box">
+            <img src="/Umusic/images/tongyong.png" class="myimg"/>
+        </div>
+        <div>
+            <audio class="myaudio" src="" controls></audio>
+        </div>
+        <a href="javascript:void(0)" class="cancel-popup-a">取消</a>
+        <a href="javascript:void(0)" class="submit-update">修改</a>
+    </div>
+
+</div>
+</body>
+<script>
+    // 获得文件的路径
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjcectURL != undefined) {
+            url = window.createOjcectURL(file);
+        } else if (window.URL != undefined) {
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) {
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+    // 当点击上传图片后
+    $(".musicPhoto")[0].onchange = function(){
+        var files = $(".musicPhoto")[0].files;
+        if(files.length>0){//未选中文件时，长度为0
+            var file = files[0];//因为是单文件上传，所以只有一个文件（File）对象
+            if(file.type!="image/png"){
+                alert("请上传正确格式");
+                $(".musicPhoto")[0].files=null;
+                return;
+            }
+            console.log(file);//下面所有的属性都可以从此对象的输出得到
+            console.log("文件名称：" + file.name + ",文件大小：" + file.size + "字节,文件类型："
+                + file.type + ",上次修改时间：" + file.lastModifiedDate);
+           // alert(getObjectURL(file));
+            $(".myimg")[0].setAttribute("src",getObjectURL(file));
+        }
+    }
+    // 当音频点击上传之后
+    $(".musicAudio")[0].onchange = function(){
+        var files = $(".musicAudio")[0].files;
+        if(files.length>0){//未选中文件时，长度为0
+            var file = files[0];//因为是单文件上传，所以只有一个文件（File）对象
+           if(file.type!="audio/mpeg") {
+               alert("请上传MP3格式");
+           }
+            console.log(file);//下面所有的属性都可以从此对象的输出得到
+            console.log("文件名称：" + file.name + ",文件大小：" + file.size + "字节,文件类型："
+                + file.type + ",上次修改时间：" + file.lastModifiedDate);
+           // alert(getObjectURL(file));
+            $(".myaudio")[0].setAttribute("src",getObjectURL(file));
+        }
+    }
+        //获得文件的路径
+
+    // 搜索增加点击事件，进行模糊查询
+    $(".search-musics-box-a").click(function () {
+        $.ajax({
+            url:"/Umusic/AdministratorMusicServlet?keyWord="+$(".search-musics-box-input")[0].value+"&method=findUserListByKeyWord",
+            dataType:"json",
+            success:function (data) {
+                if(data!=null){
+                    // 先移除上一个留的
+                    // 先移除上一个留的
+                    if($(".music-ul")[0]!=null){
+                        $(".show-music-list-box")[0].removeChild($(".music-ul")[0]);
+                    }
+                    // 先移除上一个留的
+                    // 先移除上一个留的
+                    var ul = $(".copy-ul")[0].cloneNode(true);
+                    ul.className = "music-ul";
+                    $(".show-music-list-box")[0].appendChild(ul);
+                    for(var i = 0 ; i <data.length; i ++) {
+                        var li = $(".copy-li")[0].cloneNode(true);
+                        li.className = "music-li";
+                        ul.appendChild(li);
+                        li.querySelector(".musicId").innerHTML = "音乐id："+data[i].musicId;
+                        li.querySelector(".musicName").innerHTML = "音乐："+data[i].musicName;
+                        li.querySelector(".singerName").innerHTML ="歌手："+ data[i].singerName;
+                        li.querySelector(".momment_number").innerHTML ="评论数："+ data[i].momment_number;
+                        // 给删除操作绑定事件需要设置属性
+                        li.querySelector(".delete-music-a").setAttribute("musicId",data[i].musicId);
+                        // 给每一个删除操作绑定事件
+                        li.querySelector(".delete-music-a").onclick=function () {
+                            $.ajax({
+                                url:"/Umusic/AdministratorMusicServlet?musicId="+this.getAttribute("musicId")+"&method=delete",
+                                dataType:"json",
+                                success:function (data) {
+                                    $(".search-musics-box-a")[0].click();
+                                }
+                            });
+                        }
+                        // 需要给标签绑定属性
+                        li.querySelector(".update-music-a").setAttribute("musicId",data[i].musicId);
+                        li.querySelector(".update-music-a").setAttribute("musicName",data[i].musicName);
+                        li.querySelector(".update-music-a").setAttribute("singerName",data[i].singerName);
+                        // 点击修改操作，弹出box，然后重新修改box的属性值
+                        li.querySelector(".update-music-a").onclick=function () {
+                            // 弹出盒子
+                            $(".popup-box").removeClass("none");
+                            $(".full-screen").removeClass("none");
+                            // 修改input的值，从标签属性中取
+                            $(".musicId-input")[0].value = this.getAttribute("musicId");
+                            $(".musicName-input")[0].value = this.getAttribute("musicName");
+                            $(".singerName-input")[0].value = this.getAttribute("singerName");
+                            $(".submit-update")[0].setAttribute("method","update");
+                        }
+                    }
+                }
+            }
+        });
+    });
+    // 取消弹出修改
+    $(".cancel-popup-a").click(function () {
+
+        $(".popup-box").addClass("none");
+        $(".full-screen").addClass("none");
+    });
+    // 提交修改音乐信息
+    $(".submit-update").click(function () {
+        // 获取文件
+        var fileObj1 = $(".musicPhoto")[0].files[0];
+        var fileObj2 = $(".musicAudio")[0].files[0];
+        if(fileObj1==null){
+            alert("上传失败，图片为空");
+            return;
+        }
+        if(fileObj2==null){
+            alert("上传失败，文件为空");
+            return;
+        }
+        if(fileObj1.type!="image/png"){
+            alert("上传失败，图片必须是png类型");
+            return;
+        }
+        if(fileObj2.type!="audio/mpeg"){
+            alert("上传失败，音频必须是.mp3类型");
+            return;
+        }
+        var formData = new FormData();
+        formData.append("musicPhoto", fileObj1);
+        formData.append("musicAudio", fileObj2);
+        //因为新增和修改用同一弹出框操作，url肯定不一样
+        formData.append("method", this.getAttribute("method"));
+        formData.append("musicId", $(".musicId-input")[0].value);
+        formData.append("musicName", $(".musicName-input")[0].value);
+        formData.append("singerName", $(".singerName-input")[0].value);
+        $.ajax({
+            url:"/Umusic/AdministratorMusicServlet",
+            type: 'POST',
+            data: formData,
+            async: false, // 同步请求
+            cache: false, // false不会从缓存中加载信息
+            processData: false,// 告诉jQuery不要去处理发送的数据
+            contentType: false, // 告诉jQuery不要去设置Content-Type请求头
+            dataType:"json",
+            success:function (data) {
+                alert("操作成功");
+               //修改数据成功之后，点击取消按钮
+                $(".cancel-popup-a")[0].click();
+            }
+        });
+    });
+    // 给新增按钮增加事件,与修改一样，但是不需要给表单赋值，就是弹出盒子
+    $(".add-music").click(function () {
+        // 弹出盒子
+        $(".popup-box").removeClass("none");
+        $(".full-screen").removeClass("none");
+        // 重新设置url，因为新增和修改用同一弹出框操作，url肯定不一样
+        $(".submit-update")[0].setAttribute("method","add");
+    });
+</script>
+</html>

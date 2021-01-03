@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="musicSystem:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="bcbd93a6-9d53-46f9-a864-8461133ff985" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="musicSystem" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="Class" />
+        <option value="Jsp File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
+  <component name="ProjectId" id="1mB4cPgF4hVlFGOWXG8ngquFioi" />
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/target/musicSystem-1.0-SNAPSHOT/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2051518" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\WebProject\musicSystem\target\musicSystem-1.0-SNAPSHOT\images" />
+      <recent name="G:\WebProject\musicSystem\src\main\webapp\images" />
+      <recent name="G:\WebProject\musicSystem\src\main\webapp" />
+      <recent name="G:\WebProject\musicSystem\target\musicSystem-1.0-SNAPSHOT" />
+      <recent name="G:\WebProject\musicSystem\src\main\webapp\WEB-INF\lib" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\WebProject\musicSystem\src\main\webapp" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="excludedTypes">
+      <set>
+        <option value="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.571">
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bean.test" />
+      <module name="musicSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bean.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tomcat 8.5.571" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.571" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/Umusic/" />
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="musicSystem:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/Umusic" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_musicSystem" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="49530" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="musicSystem:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.17716536" />
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bcbd93a6-9d53-46f9-a864-8461133ff985" name="Default Changelist" comment="" />
+      <created>1608953728178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608953728178</updated>
+      <workItem from="1608953731728" duration="3706000" />
+      <workItem from="1608965911928" duration="5412000" />
+      <workItem from="1608971355613" duration="3802000" />
+      <workItem from="1608977472810" duration="1460000" />
+      <workItem from="1608978974047" duration="11270000" />
+      <workItem from="1609027280369" duration="10912000" />
+      <workItem from="1609039193213" duration="730000" />
+      <workItem from="1609059319332" duration="10006000" />
+      <workItem from="1609083517444" duration="849000" />
+      <workItem from="1609113640162" duration="3069000" />
+      <workItem from="1609137102519" duration="10477000" />
+      <workItem from="1609199990365" duration="14052000" />
+      <workItem from="1609223374265" duration="10909000" />
+      <workItem from="1609237410254" duration="10959000" />
+      <workItem from="1609252713826" duration="4618000" />
+      <workItem from="1609286383593" duration="14569000" />
+      <workItem from="1609309632758" duration="3442000" />
+      <workItem from="1609313486825" duration="1610000" />
+      <workItem from="1609315144250" duration="5371000" />
+      <workItem from="1609323562524" duration="11430000" />
+      <workItem from="1609337096615" duration="5912000" />
+      <workItem from="1609372964859" duration="14223000" />
+      <workItem from="1609396054476" duration="10778000" />
+      <workItem from="1609408063771" duration="8283000" />
+      <workItem from="1609423021478" duration="1239000" />
+      <workItem from="1609459230505" duration="14534000" />
+      <workItem from="1609482801558" duration="6792000" />
+      <workItem from="1609490758292" duration="4464000" />
+      <workItem from="1609498945001" duration="2433000" />
+      <workItem from="1609504205622" duration="5035000" />
+      <workItem from="1609511967495" duration="4975000" />
+      <workItem from="1609545784386" duration="447000" />
+      <workItem from="1609546371129" duration="179000" />
+      <workItem from="1609546636418" duration="13445000" />
+      <workItem from="1609568721874" duration="5790000" />
+      <workItem from="1609574582410" duration="8372000" />
+      <workItem from="1609584130196" duration="8721000" />
+      <workItem from="1609597304383" duration="3786000" />
+      <workItem from="1609632245094" duration="12643000" />
+      <workItem from="1609655524284" duration="7653000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="172" y="0" key="#Web_Browsers" timestamp="1608965325628">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="172" y="0" key="#Web_Browsers/0.0.1360.728@0.0.1360.728" timestamp="1608965325628" />
+    <state x="134" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609589543740">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="134" y="16" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1360.728@0.0.1360.728" timestamp="1609589543740" />
+    <state x="376" y="161" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1609573709922">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="376" y="161" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1360.728@0.0.1360.728" timestamp="1609573709922" />
+    <state x="441" y="0" key="#com.intellij.ide.util.MemberChooser" timestamp="1609335541819">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="441" y="0" key="#com.intellij.ide.util.MemberChooser/0.0.1360.728@0.0.1360.728" timestamp="1609335541819" />
+    <state x="434" y="214" width="491" height="309" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1609231673673">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="434" y="214" width="491" height="309" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1360.728@0.0.1360.728" timestamp="1609231673673" />
+    <state x="347" y="57" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1609589343287">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="347" y="57" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1360.728@0.0.1360.728" timestamp="1609589343287" />
+    <state x="92" y="92" width="1176" height="544" key="DiffContextDialog" timestamp="1609343014719">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="92" y="92" width="1176" height="544" key="DiffContextDialog/0.0.1360.728@0.0.1360.728" timestamp="1609343014719" />
+    <state x="410" y="66" key="FileChooserDialogImpl" timestamp="1609546547903">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="410" y="66" key="FileChooserDialogImpl/0.0.1360.728@0.0.1360.728" timestamp="1609546547903" />
+    <state width="1307" height="3" key="GridCell.Tab.0.bottom" timestamp="1609659900774">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.0.bottom/0.0.1360.728@0.0.1360.728" timestamp="1609659900774" />
+    <state width="1307" height="3" key="GridCell.Tab.0.center" timestamp="1609659900773">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.0.center/0.0.1360.728@0.0.1360.728" timestamp="1609659900773" />
+    <state width="1307" height="3" key="GridCell.Tab.0.left" timestamp="1609659900773">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.0.left/0.0.1360.728@0.0.1360.728" timestamp="1609659900773" />
+    <state width="1307" height="3" key="GridCell.Tab.0.right" timestamp="1609659900774">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.0.right/0.0.1360.728@0.0.1360.728" timestamp="1609659900774" />
+    <state width="1307" height="3" key="GridCell.Tab.1.bottom" timestamp="1609659900775">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.1.bottom/0.0.1360.728@0.0.1360.728" timestamp="1609659900775" />
+    <state width="1307" height="3" key="GridCell.Tab.1.center" timestamp="1609659900775">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.1.center/0.0.1360.728@0.0.1360.728" timestamp="1609659900774" />
+    <state width="1307" height="3" key="GridCell.Tab.1.left" timestamp="1609659900774">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.1.left/0.0.1360.728@0.0.1360.728" timestamp="1609659900774" />
+    <state width="1307" height="3" key="GridCell.Tab.1.right" timestamp="1609659900775">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.1.right/0.0.1360.728@0.0.1360.728" timestamp="1609659900775" />
+    <state width="1307" height="3" key="GridCell.Tab.2.bottom" timestamp="1609659900776">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.2.bottom/0.0.1360.728@0.0.1360.728" timestamp="1609659900776" />
+    <state width="1307" height="3" key="GridCell.Tab.2.center" timestamp="1609659900775">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.2.center/0.0.1360.728@0.0.1360.728" timestamp="1609659900775" />
+    <state width="1307" height="3" key="GridCell.Tab.2.left" timestamp="1609659900775">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.2.left/0.0.1360.728@0.0.1360.728" timestamp="1609659900775" />
+    <state width="1307" height="3" key="GridCell.Tab.2.right" timestamp="1609659900776">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="3" key="GridCell.Tab.2.right/0.0.1360.728@0.0.1360.728" timestamp="1609659900776" />
+    <state width="1307" height="266" key="GridCell.Tab.3.bottom" timestamp="1608975161484">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="266" key="GridCell.Tab.3.bottom/0.0.1360.728@0.0.1360.728" timestamp="1608975161484" />
+    <state width="1307" height="266" key="GridCell.Tab.3.center" timestamp="1608975161484">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="266" key="GridCell.Tab.3.center/0.0.1360.728@0.0.1360.728" timestamp="1608975161484" />
+    <state width="1307" height="266" key="GridCell.Tab.3.left" timestamp="1608975161484">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="266" key="GridCell.Tab.3.left/0.0.1360.728@0.0.1360.728" timestamp="1608975161484" />
+    <state width="1307" height="266" key="GridCell.Tab.3.right" timestamp="1608975161484">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state width="1307" height="266" key="GridCell.Tab.3.right/0.0.1360.728@0.0.1360.728" timestamp="1608975161484" />
+    <state x="97" y="0" key="Maven.ArtifactSearchDialog" timestamp="1608969665948">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="97" y="0" key="Maven.ArtifactSearchDialog/0.0.1360.728@0.0.1360.728" timestamp="1608969665948" />
+    <state x="32" y="0" key="SettingsEditor" timestamp="1609589620542">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="32" y="0" key="SettingsEditor/0.0.1360.728@0.0.1360.728" timestamp="1609589620542" />
+    <state x="92" y="92" width="1176" height="544" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1609377091495">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="92" y="92" width="1176" height="544" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1360.728@0.0.1360.728" timestamp="1609377091495" />
+    <state x="92" y="92" width="1176" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1609315912283">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="92" y="92" width="1176" height="544" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1360.728@0.0.1360.728" timestamp="1609315912283" />
+    <state x="312" y="152" key="com.intellij.ide.util.TipDialog" timestamp="1609655554560">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="312" y="152" key="com.intellij.ide.util.TipDialog/0.0.1360.728@0.0.1360.728" timestamp="1609655554560" />
+    <state x="0" y="4" key="new project wizard" timestamp="1608954201650">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="0" y="4" key="new project wizard/0.0.1360.728@0.0.1360.728" timestamp="1608954201650" />
+    <state x="252" y="159" width="840" height="1034" key="run.anything.popup" timestamp="1609599004651">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="252" y="159" width="840" height="1034" key="run.anything.popup/0.0.1360.728@0.0.1360.728" timestamp="1609599004651" />
+    <state x="259" y="-1" width="840" height="1034" key="search.everywhere.popup" timestamp="1609643146520">
+      <screen x="0" y="0" width="1360" height="728" />
+    </state>
+    <state x="259" y="-1" width="840" height="1034" key="search.everywhere.popup/0.0.1360.728@0.0.1360.728" timestamp="1609643146520" />
+  </component>
+</project>

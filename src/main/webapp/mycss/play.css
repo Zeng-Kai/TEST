@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+}
+.play-all{
+    width:100%;
+    height: 120px;
+    background-color: #14252e;
+
+}
+.play-all>*{
+    position: relative;
+    top: 20px;
+}
+.theThree-icon{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.play-icon-box.box1,.play-icon-box.box3{
+    display: inline-block;
+
+}
+.play-icon-box.box2{
+    display:inline-block;
+}
+.play-music{
+    color: #EEEEEE;
+    font-size: 50px;
+}
+.before-music,.after-music{
+    font-size: 30px;
+}
+.playTwo{
+    /* float: left; */
+}
+.img{
+    width: 100px;
+    height: 80px;
+    float: left;
+}
+.touxiang{
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+.barAndfontTime{
+    float: left;
+}
+.bar-above{
+    width: 500px;
+    float: left;
+    height:20px;
+    border: blue saddlebrown 1px;
+}
+.allProgressBarBG{
+    position: relative;
+
+    width: 500px;
+    height: 50px;
+    top: 25px;
+}
+.musicName{
+
+    float: left;
+
+    color: #c4c3c3;
+    width: 180px;
+    height:20px;
+}
+.musicNowTime{
+    position: relative;
+    right: 50px;
+    float: right;
+
+    color: #697377;
+    width: 100px;
+    height:20px;
+}

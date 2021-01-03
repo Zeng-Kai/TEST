@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <style>
+        *{
+            margin: 0px;
+        }
+        .none{
+            display: none;
+        }
+        .full-screen{
+            z-index: 99;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,0,0,.5);
+            position: absolute;
+            top: 0px;
+        }
+        .popup-userName{
+            z-index: 999;
+            position: absolute;
+            left: 100px;
+            top:100px;
+            width: 300px;
+            height: 100px;
+            border: 1px red solid;
+            background: yellow;
+        }
+        .popup-password{
+            z-index: 999;
+            position: absolute;
+            left: 100px;
+            top:100px;
+            width: 300px;
+            height: 150px;
+            border: 1px red solid;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <!--全屏-->
+    <div class="full-screen none"></div>
+    <div>
+        <a href="javascript:void(0)" class="content-One-switch">基本资料</a>
+        <a href="javascript:void(0)" class="content-Two-switch">我的收藏</a>
+    </div>
+    <hr/>
+    <div class="content-One">
+        <div class="userName-box">用户名：<span></span><a href="javascript:void(0)" class="update-userName-a">修改</a></div>
+        <div class="email-box"> 邮箱：<span></span></div>
+        <div class="password-box">密码：******<a href="javascript:void(0)" class="update-password-a">修改</a></div>
+    </div>
+    <div class=" popup-userName none">
+        <div class="popup-userName-top">
+            姓名
+        </div>
+        <hr/>
+        <div class="userName-input-box "><input type="text" class="userName-input"/></div>
+        <div>
+            <a href="javascript:void(0)" class="cancel-update-userName">取消</a>
+            <a href="javascript:void(0)" class="submit-update-userName">修改</a>
+        </div>
+    </div>
+    <div class="popup-password none">
+        <div class="popup-password-top">
+            密码
+        </div>
+        <hr/>
+        <div class=" "><input type="text" class="oldPssword-input"/></div>
+        <hr/>
+        <div class=" "><input type="text" class="newPassword1-input"/></div>
+        <hr/>
+        <div class=" "><input type="text" class="newPassword2-input"/></div>
+        <div>
+            <a href="javascript:void(0)" class="cancel-update-password">取消</a>
+            <a href="javascript:void(0)" class="submit-update-password">修改</a>
+        </div>
+    </div>
+    <div class="content-Two none">
+            hello
+    </div>
+    <!--复制-->
+    <ul class="music-list-ul-copy none">
+
+    </ul>
+    <li class="music-list-li-copy none">
+        <a href= "" class="music-list-a"></a>
+    </li>
+</body>
+<script>
+    // 点击个人主页
+    $(".content-One-switch").click(function () {
+        $(".content-One").removeClass("none");
+        $(".content-Two").addClass("none");
+        window.location.reload();
+    })
+    // 点击我的收藏
+    $(".content-Two-switch").click(function () {
+        $(".content-One").addClass("none");
+        $(".content-Two").removeClass("none");
+        showMyCollect();
+    })
+</script>
+<script>
+    var userName = -1;
+    var email = -1;
+    var password = -1
+    window.onload=function () {
+        refreshUserNameAndPassword();
+    }
+    // 加载用户名和邮箱
+    function refreshUserNameAndPassword() {
+        // 点击修改用户名
+        $.ajax({
+            url:"GetUserSessionServlet",
+            dataType:"json",
+            success:function (data) {
+                if(data!=null){
+                    //说明用户登录了
+                    $(".userName-box span").html(data.userName);
+                    $(".email-box span").html(data.email);
+                    userName = data.userName;
+                    email = data.email;
+                    password = data.password;
+                }
+            }
+        });
+
+    }
+    function f() {
+
+    }
+    // 点击修改用户名弹出修改盒子
+    $(".update-userName-a").click(function () {
+        $(".popup-userName").removeClass("none");
+        $(".full-screen").removeClass("none");
+    })
+    // 点击修改密码弹出修改盒子
+    $(".update-password-a").click(function () {
+        $(".popup-password").removeClass("none");
+        $(".full-screen").removeClass("none");
+    })
+    // 修改用户名
+    $(".submit-update-userName").click(function () {
+        alert($(".userName-input")[0].value);
+        //加载页面时调用
+        $.ajax({
+            url:"UpdateUserServlet?userName="+$(".userName-input")[0].value+"&method=userName",
+            dataType:"json"
+        });
+        window.location.reload();
+    })
+    // 绑定取消修改用户事件
+    $(".cancel-update-userName").click(function () {
+
+        $(".popup-userName").addClass("none");
+        $(".full-screen").addClass("none");
+    });
+    //绑定取消修改密码事件
+    $(".cancel-update-password").click(function () {
+        $(".popup-password").addClass("none");
+        $(".full-screen").addClass("none");
+    })
+    // 修改密码
+    $(".submit-update-password").click(function () {
+        if(password!=($(".oldPssword-input")[0].value)){
+            alert("密码错误");
+            return;
+        }
+        // 判断新密码与老密码一致情况
+        if(password==($(".newPassword1-input")[0].value)){
+            alert("新密码与老密码不能一样");
+            return;
+        }
+        // 两次修改密码不一致
+        if(($(".newPassword1-input")[0].value)!=($(".newPassword2-input")[0].value)){
+            alert("两次密码不一致");
+            return;
+        }
+        alert($(".newPassword1-input")[0].value);
+        //加载页面时调用
+        $.ajax({
+            url:"UpdateUserServlet?password="+$(".newPassword1-input")[0].value+"&method=password",
+            dataType:"json"
+        });
+        window.location.reload();
+    });
+</script>
+<!--显示个人收藏-->
+<script>
+    function showMyCollect() {
+        updeList("CollectServlet?method=getMyCollectList");
+    }
+    // 更新查询列表 ajax 异步操作
+    function updeList(url) {
+        var xhr= new XMLHttpRequest();
+        var responseObj;
+        // 建立对服务器的调用
+        xhr.open("GET",url);
+        xhr.onreadystatechange = function(){
+            // 当readyState==4且状态为200时，表示响应就绪
+            if(xhr.readyState==4&&xhr.status==200){
+                var x = '('+ (xhr.responseText) +')';
+                responseObj = eval(x);
+                var cul = document.querySelector('.music-list-ul-copy').cloneNode(true);
+                cul.className = "music-list-ul";
+                // append ul
+                document.querySelector('.content-Two').appendChild(cul);
+                for(var i = 0; i<responseObj.length; i ++){
+                    // 更新歌曲列表的值
+                    musicListOp(responseObj[i],i,cul);
+                }
+            }
+        }
+        xhr.send(null);
+    }
+    // 更新歌曲列表操作
+    function musicListOp(muisc,i,cul){
+        // 歌曲列表结构 .music-list->.music-list-ul->(music-list-li+i)*n
+        var cli = document.querySelector('.music-list-li-copy').cloneNode(true);
+        cli.className = "music-list-li"+i;
+        //-----------
+        // 更改链接值
+        cli.querySelector('.music-list-a').setAttribute("href","PlayMusicServlet?musicId="+muisc.musicId);
+        cli.querySelector('.music-list-a').innerText= muisc.musicName;
+        cul.appendChild(cli);
+    }
+</script>
+</html>

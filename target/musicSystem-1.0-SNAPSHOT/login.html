@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <style>
+        *{
+            text-decoration: none;
+        }
+        .logintitle{
+            font-size: 20px;
+            align-items: center;
+            align-content: center;
+            width: 150px;
+            height: 35px;
+
+        }
+        .logintitle div{
+
+            font-weight: bold;
+            position: relative;
+            left: 80px;
+            width: 120px;
+            height: 35px;
+        }
+        .logintitle span{
+            font-family:"楷体";
+            font-size: 22px;
+
+        }
+        /*上-------下*/
+        .password,.email{
+            margin-bottom: 20px;
+            border: 0;
+            height: 28px;
+
+            width: 240px;
+            padding: 0;
+            /*!*背景透明*!*/
+            background: transparent;
+            /*!*background:gainsboro;*!*/
+            /*background-color: burlywood;*/
+            color: #333333;
+            /*!*点击矩形的时候没有边框*!*/
+            outline: none;
+            float: left;
+
+        }
+        .login-input-box{
+            border: 1px  #cccccc solid;
+            background:#f6f6f6 ;
+            width: 290px;
+            height: 30px;
+        }
+        .login-input-box-email-label,.login-input-box-password-label{
+            line-height: 25px;
+            font-size: 15px;
+            width: 50px;
+            height: 28px;
+            float: left;
+            color: #a1a1a1;
+        }
+        .login-button{
+            display: block;
+            width: 290px;
+            height: 30px;
+            background-color: #11a4f0;
+            border-radius: 5%;
+        }
+        .login-button-box{
+            width: 100px;
+            height: 20px;
+            position: relative;
+            left: 120px;
+            top: 5px;
+            color: white;
+            /*字间距*/
+            letter-spacing:20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logintitle"><div>登录<span>有音乐</span></div></div>
+        <div class="login-input-box">
+            <div class="login-input-box-email-label">邮箱：</div>
+            <input type="text" class="email"/>
+        </div>
+        <br/>
+
+        <div class="login-input-box">
+            <div class="login-input-box-password-label">密码：</div>
+            <input type="password" class="password"/>
+        </div>
+        <br/>
+
+
+
+
+    <a class="login-button" href="javascript:void(0)" ><div class="login-button-box"> 登录</div></a>
+    <a href="register.html" class="login-to-register" style="color:#007dff;">立即注册</a>
+</body>
+<!--Ajax判断是否存在邮箱-->
+<script>
+    document.querySelector(".login-button").onclick=function submit() {
+        var xhr= new XMLHttpRequest();
+        var responseObj;
+        // 建立对服务器的调用
+        xhr.open("POST","LoginServlet",true);
+        // 如果想要使用post提交数据,必须添加此行
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function(){
+            // 当readyState==4且状态为200时，表示响应就绪
+            if(xhr.readyState==4&&xhr.status==200){
+                var x = "("+ (xhr.responseText) +")";
+                responseObj = eval(x);
+                if(responseObj==true){
+                    // 当登录成功时，才能进行
+                    // 点叉
+                    window.parent.document.querySelector(".hide-login").click();
+                    // 父刷新
+                    window.parent.location.reload();
+                }
+            }
+        }
+        var Parameter = "email="+document.querySelector(".email").value+"&password="+document.querySelector(".password").value;
+        // 将数据通过send方法传递
+        xhr.send(Parameter);
+    }
+</script>
+</html>

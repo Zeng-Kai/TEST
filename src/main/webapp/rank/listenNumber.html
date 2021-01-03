@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .none{
+            display: none;
+        }
+    </style>
+    <style>
+        .shouye-box .shouye .none{
+            display: none;
+        }
+        /*下拉菜单显示个人主页和退出登录*/
+        .show-li-box{
+            position: relative;
+            top: 10px;
+            width: 100px;
+            height: 30px;
+            background: green;
+        }
+        /*实现下拉菜单*/
+        .show-li-box:hover>.show-li-box-hover{
+            display: block;
+        }
+        /*菜单*/
+        .show-li-box-hover{
+            display: none;
+            position: absolute;
+            z-index: 9999;
+            top: 30px;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+        /*退出登录、个人主页*/
+        .show-li-box-hover a{
+            display: block;
+        }
+    </style>
+    <style>
+        .music-list  li a{
+            text-decoration: none;
+            color: black;
+        }
+        .music-list  li a:hover{
+
+            color: palevioletred;
+        }
+        .music-list ul li {
+            display: block;
+            margin: 10px;
+            list-style: none;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="/Umusic/mycss/shouye.css" />
+    <link rel="stylesheet" type="text/css" href="/Umusic/css/font-awesome.css"/>
+    <script type="text/javascript" src="/Umusic/jquery.min.js"></script>
+</head>
+<body>
+<div class="shouye-box">
+    <ul class="shouye">
+        <li class="HomePage"><a href="/Umusic/index.html"><div>首页</div></a></li>
+        <li class="List"><a href="listenNumber.html"><div>音乐榜单</div></a></li>
+        <li class="search">
+            <form action="/Umusic/search.html" method="get">
+                <input type="text" class="keyWord" name="keyWord" placeholder="北国之春"/>
+            </form>
+            <button class="search-submit"><div>搜索</div></button>
+        </li>
+        <li class="login">
+            <a href="javascript:void(0)" class="show-login ">
+                <div></div>
+            </a>
+        </li>
+
+        <li class="show-li none">
+            <div class="show-li-box">
+                <div class="user-name">
+                </div>
+                <div class="show-li-box-hover">
+                    <a href="/Umusic/homepage.html" target="_blank" >个人主页</a>
+                    <a href="" class="logout">退出登录</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="loginAllBg none"></div>
+    <div class="show-login-box none">
+        <div class="hide-login-box"> <a href="javascript:void(0)" class="hide-login"><i class="fa fa-remove"></i></a></div>
+        <iframe src="/Umusic/login.html" class="login-iframe" height="200px" width="300px"> </iframe>
+    </div>
+</div>
+<hr/>
+<div class="rank">
+    <button class="hello">听歌次数榜</button>
+    <a href="javascript:void(0)">收藏次数榜</a>
+    <a href="javascript:void(0)">评论数榜</a>
+</div>
+<hr/>
+<div class="music-list">
+
+</div>
+<!--复制-->
+<ul class="music-list-ul-copy none">
+
+</ul>
+<li class="music-list-li-copy none">
+    <a href= "" class="music-list-a"></a>
+</li>
+</body>
+<script>
+    // 更新查询列表 ajax 异步操作
+    function updeList() {
+        var xhr= new XMLHttpRequest();
+        var responseObj;
+        // 建立对服务器的调用
+        xhr.open("GET","/Umusic/RankServlet?rankWay=listenNumber");
+        xhr.onreadystatechange = function(){
+            // 当readyState==4且状态为200时，表示响应就绪
+            if(xhr.readyState==4&&xhr.status==200){
+                var x = "("+ (xhr.responseText) +")";
+                responseObj = eval(x);
+                var cul = document.querySelector('.music-list-ul-copy').cloneNode(true);
+                cul.className = "music-list-ul";
+                document.querySelector('.music-list').appendChild(cul);
+
+                for(var i = 0; i<responseObj.length; i ++){
+                    // 更新歌曲列表的值
+                    musicListOp(responseObj[i],i,cul);
+                }
+            }
+        }
+        xhr.send(null);
+    }
+    // 更新歌曲列表操作
+    function musicListOp(music,i,cul){
+        // 歌曲列表结构 .music-list->.music-list-ul->(music-list-li+i)*n
+        var cli = document.querySelector('.music-list-li-copy').cloneNode(true);
+        cli.className = "music-list-li"+i;
+        //-----------
+        // 更改链接值
+        cli.querySelector('.music-list-a').setAttribute("href","/Umusic/PlayMusicServlet?musicId="+music.musicId);
+        cli.querySelector('.music-list-a').innerText= "歌名："+music.musicName+"     "+"歌手："+music.singerName ;
+        cul.appendChild(cli);
+    }
+    document.querySelector(".hello").onclick = function(){
+
+        document.querySelector('.music-list').removeChild(document.querySelector('.music-list-ul'));
+        updeList();
+    }
+    // 当其他html搜索歌曲跳转到search.html时候，先发送异步请求查询关键字
+    window.onload= function () {
+        //document.querySelector('.music-list').removeChild(document.querySelector('.music-list-ul'));
+        updeList();
+        refreshLogin();
+    }
+
+</script>
+<script>
+    // <!--此js的内容是用于被子页面iframe调用，因为必须要放到前面-->
+    // closeIframe,当登录成功时，子页面调用
+    function closeIframe() {
+        $(".loginAllBg").addClass("none");
+        $(".show-login-box").addClass("none");
+    }
+    // 显示登录
+    $(".show-login").click( function (){
+
+        $(".loginAllBg").removeClass("none");
+        $(".show-login-box").removeClass("none");
+    });
+    // 取消显示登录
+    $(".hide-login").click( function (){
+        $(".loginAllBg").addClass("none");
+        $(".show-login-box").addClass("none");
+    });
+    //当点击搜索按钮后，浏览器改变url的值，然后search.html自动执行一次异步请求搜索
+    document.querySelector(".search-submit").onclick = function () {
+        location.href = "/Umusic/search.html?keyWord="+document.querySelector(".keyWord").value;
+    }
+    // 判断用户是否登录
+    // 判断用户是否登录
+    function refreshLogin() {
+        $.ajax({
+            url:"/Umusic/GetUserSessionServlet",
+            dataType:"json",
+            success:function (data) {
+                if(data!=null){
+                    //说明用户登录了
+                    $(".login").addClass("none");
+                    $(".show-li>div>.user-name").html(data.userName);
+                    //显示用户名的li
+                    $(".show-li").removeClass("none");
+                }else{
+                    $(".login").removeClass("none");
+                    $(".show-login>div").html("login");
+                    //显示用户名的li
+                    $(".show-li").addClass("none");
+                }
+            }
+        });
+
+    }
+    // 设置退出登录
+    $(".logout").click(function () {
+        $.ajax({
+            url:"LogOutServlet",
+            dataType:"json"
+        });
+        refreshLogin();
+    });
+    // 设置个人主页
+    $(".logout").click(function () {
+        $.ajax({
+            url:"LogOutServlet",
+            dataType:"json"
+        });
+        refreshLogin();
+    });
+</script>
+</html>
